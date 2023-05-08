@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CD3F5D22A07D7860006E2E9 /* The Movie Database_Lesson 3.2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Movie Database_Lesson 3.2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Movie Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD3F5D52A07D7860006E2E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD3F5D72A07D7860006E2E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CD3F5D92A07D7860006E2E9 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		2CD3F5C92A07D7860006E2E9 = {
 			isa = PBXGroup;
 			children = (
-				2CD3F5D42A07D7860006E2E9 /* The Movie Database_Lesson 3.2 */,
+				2CD3F5D42A07D7860006E2E9 /* The Movie Database */,
 				2CD3F5D32A07D7860006E2E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		2CD3F5D32A07D7860006E2E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CD3F5D22A07D7860006E2E9 /* The Movie Database_Lesson 3.2.app */,
+				2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CD3F5D42A07D7860006E2E9 /* The Movie Database_Lesson 3.2 */ = {
+		2CD3F5D42A07D7860006E2E9 /* The Movie Database */ = {
 			isa = PBXGroup;
 			children = (
 				2CD3F5E92A07D78E0006E2E9 /* ViewControllers */,
@@ -67,7 +67,7 @@
 				2CD3F5EB2A07D7A00006E2E9 /* App */,
 				2CD3F5F22A07DA8A0006E2E9 /* Resources */,
 			);
-			path = "The Movie Database_Lesson 3.2";
+			path = "The Movie Database";
 			sourceTree = "<group>";
 		};
 		2CD3F5E92A07D78E0006E2E9 /* ViewControllers */ = {
@@ -124,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CD3F5D12A07D7860006E2E9 /* The Movie Database_Lesson 3.2 */ = {
+		2CD3F5D12A07D7860006E2E9 /* The Movie Database */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CD3F5E62A07D7870006E2E9 /* Build configuration list for PBXNativeTarget "The Movie Database_Lesson 3.2" */;
+			buildConfigurationList = 2CD3F5E62A07D7870006E2E9 /* Build configuration list for PBXNativeTarget "The Movie Database" */;
 			buildPhases = (
 				2CD3F5CE2A07D7860006E2E9 /* Sources */,
 				2CD3F5CF2A07D7860006E2E9 /* Frameworks */,
@@ -136,9 +136,9 @@
 			);
 			dependencies = (
 			);
-			name = "The Movie Database_Lesson 3.2";
+			name = "The Movie Database";
 			productName = "The Movie Database_Lesson 3.2";
-			productReference = 2CD3F5D22A07D7860006E2E9 /* The Movie Database_Lesson 3.2.app */;
+			productReference = 2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,7 +156,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CD3F5CD2A07D7860006E2E9 /* Build configuration list for PBXProject "The Movie Database_Lesson 3.2" */;
+			buildConfigurationList = 2CD3F5CD2A07D7860006E2E9 /* Build configuration list for PBXProject "The Movie Database" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -169,7 +169,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CD3F5D12A07D7860006E2E9 /* The Movie Database_Lesson 3.2 */,
+				2CD3F5D12A07D7860006E2E9 /* The Movie Database */,
 			);
 		};
 /* End PBXProject section */
@@ -395,7 +395,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CD3F5CD2A07D7860006E2E9 /* Build configuration list for PBXProject "The Movie Database_Lesson 3.2" */ = {
+		2CD3F5CD2A07D7860006E2E9 /* Build configuration list for PBXProject "The Movie Database" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CD3F5E42A07D7870006E2E9 /* Debug */,
@@ -404,7 +404,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CD3F5E62A07D7870006E2E9 /* Build configuration list for PBXNativeTarget "The Movie Database_Lesson 3.2" */ = {
+		2CD3F5E62A07D7870006E2E9 /* Build configuration list for PBXNativeTarget "The Movie Database" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CD3F5E72A07D7870006E2E9 /* Debug */,
