@@ -8,37 +8,46 @@
 import UIKit
 
 final class MoviesViewController: UIViewController {
+    // MARK: - Private IBOutlets
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     // MARK: - Private properties
-    private let linkUrl = "https://api.themoviedb.org/3/trending/movie/week?api_key=99709c91f79d11764afb7ab67218f012"
+    private var movies: Movies?
+    private let networkManager = NetworkManager.shared
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCourse()
+        self.moviesCollectionView.register(UINib(nibName: "MoviesViewCell", bundle: nil), forCellWithReuseIdentifier: "MoviesViewCell")
+        fetchMovies()
+    }
+}
+
+extension MoviesViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
     }
     
-    // MARK: - Private methods
-    private func fetchCourse() {
-        
-        guard let url = URL(string: linkUrl) else {
-            print("Invalid URL")
-            return
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let moviesCell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesViewCell", for: indexPath) as! MoviesViewCell
+        moviesCell.awakeFromNib()
+        return moviesCell
+    }
+    
+    
+}
+    //MARK: - Networking
+extension MoviesViewController {
+    private func fetchMovies() {
+        networkManager.fetchMovies(Movies.self, from: Link.moviesUrl.url) { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.movies = movies
+            case .failure(let error):
+                print(error)
+            }
         }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let movies = try decoder.decode(Movies.self, from: data)
-                print(movies)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }.resume()
     }
 }
 

@@ -10,24 +10,51 @@ import Foundation
 struct Movies : Decodable {
     let page : Int
     let results : [Results]
-    let total_pages : Int
-    let total_results : Int
+    let totalPages : Int
+    let totalResults : Int
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case page = "page"
+        case results = "results"
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
 }
 
 struct Results : Decodable {
     let adult : Bool
-    let backdrop_path : String
+    let backdropPath : String
     let id : Int
     let title : String
-    let original_language : String
-    let original_title : String
+    let originalLanguage : String
+    let originalTitle : String
     let overview : String
-    let poster_path : String
-    let media_type : String
-    let genre_ids : [Int]
+    let posterPath : String
+    let mediaType : String
+    let genreIds : [Int]
     let popularity : Double
-    let release_date : String
+    let releaseDate : String
     let video : Bool
-    let vote_average : Double
-    let vote_count : Int
+    let voteAverage : Double
+    let voteCount : Int
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case adult = "adult"
+        case backdropPath = "backdrop_path"
+        case id = "id"
+        case title = "title"
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview = "overview"
+        case posterPath = "poster_path"
+        case mediaType = "media_type"
+        case genreIds = "genre_ids"
+        case popularity = "popularity"
+        case releaseDate = "release_date"
+        case video = "video"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+    }
 }

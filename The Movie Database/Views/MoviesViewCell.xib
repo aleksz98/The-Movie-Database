@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MoviesViewCell" id="gTV-IL-0wX" customClass="MoviesViewCell" customModule="The_Movie_Database" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xfr-o3-aMZ">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <color key="backgroundColor" red="0.46325634180000003" green="0.46331017559999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjX-yQ-uqW">
+                        <rect key="frame" x="8" y="158.33333333333334" width="184" height="33.666666666666657"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xfr-o3-aMZ" secondAttribute="trailing" id="Fjz-u3-lF6"/>
+                <constraint firstAttribute="trailing" secondItem="mjX-yQ-uqW" secondAttribute="trailing" constant="8" id="PqT-oK-MJo"/>
+                <constraint firstItem="xfr-o3-aMZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QVW-VJ-1nq"/>
+                <constraint firstItem="xfr-o3-aMZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g9e-J3-7nL"/>
+                <constraint firstItem="mjX-yQ-uqW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="kPA-Fl-eKi"/>
+                <constraint firstAttribute="bottom" secondItem="xfr-o3-aMZ" secondAttribute="bottom" id="tZP-6X-IIN"/>
+                <constraint firstAttribute="bottom" secondItem="mjX-yQ-uqW" secondAttribute="bottom" constant="8" id="tkW-2w-20a"/>
+            </constraints>
+            <size key="customSize" width="479" height="115"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="CornerRadius" value="10"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="movieImage" destination="xfr-o3-aMZ" id="fQk-Cy-p3Q"/>
+                <outlet property="movieTitle" destination="mjX-yQ-uqW" id="5EN-Ix-nms"/>
+            </connections>
+            <point key="canvasLocation" x="465.64885496183206" y="42.253521126760567"/>
+        </collectionViewCell>
+    </objects>
+</document>
