@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C1218222A0C358F001CF8F9 /* MoviesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1218202A0C358F001CF8F9 /* MoviesViewCell.swift */; };
 		2C1218232A0C358F001CF8F9 /* MoviesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1218212A0C358F001CF8F9 /* MoviesViewCell.xib */; };
+		2C1218262A0C3C8F001CF8F9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C1218252A0C3C8F001CF8F9 /* SDWebImage */; };
 		2CD3F5D62A07D7860006E2E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D52A07D7860006E2E9 /* AppDelegate.swift */; };
 		2CD3F5D82A07D7860006E2E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D72A07D7860006E2E9 /* SceneDelegate.swift */; };
 		2CD3F5DA2A07D7860006E2E9 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D92A07D7860006E2E9 /* MoviesViewController.swift */; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1218262A0C3C8F001CF8F9 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +153,9 @@
 			dependencies = (
 			);
 			name = "The Movie Database";
+			packageProductDependencies = (
+				2C1218252A0C3C8F001CF8F9 /* SDWebImage */,
+			);
 			productName = "The Movie Database_Lesson 3.2";
 			productReference = 2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 2CD3F5C92A07D7860006E2E9;
+			packageReferences = (
+				2C1218242A0C3C8F001CF8F9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 2CD3F5D32A07D7860006E2E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -430,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C1218242A0C3C8F001CF8F9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C1218252A0C3C8F001CF8F9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C1218242A0C3C8F001CF8F9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CD3F5CA2A07D7860006E2E9 /* Project object */;
 }

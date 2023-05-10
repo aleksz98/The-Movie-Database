@@ -24,26 +24,29 @@ final class MoviesViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension MoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return movies?.results.count ?? 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let moviesCell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesViewCell", for: indexPath) as! MoviesViewCell
-        moviesCell.awakeFromNib()
+        if let movie = movies?.results[indexPath.row] {
+            moviesCell.configureWith(movie)
+        }
         return moviesCell
     }
-    
-    
 }
-    //MARK: - Networking
+
+//MARK: - Networking
 extension MoviesViewController {
     private func fetchMovies() {
         networkManager.fetchMovies(Movies.self, from: Link.moviesUrl.url) { [weak self] result in
             switch result {
             case .success(let movies):
                 self?.movies = movies
+                self?.moviesCollectionView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -51,3 +54,10 @@ extension MoviesViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+extension MoviesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSize = CGSize(width: 170, height: 170)
+        return cellSize
+    }
+}

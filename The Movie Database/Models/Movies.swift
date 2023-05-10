@@ -24,7 +24,7 @@ struct Movies : Decodable {
 
 struct Results : Decodable {
     let adult : Bool
-    let backdropPath : String
+    let backdropPath : String?
     let id : Int
     let title : String
     let originalLanguage : String
