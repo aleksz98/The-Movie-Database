@@ -14,8 +14,18 @@ class MoviesViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     
     // MARK: - Private methods
-    func configureWith(_ item: Results) {
+    func configureWithMovies(_ item: ResultsMovies) {
         movieTitle.text = item.originalTitle
+        var imageUrlString = ""
+        if let backdropPath = item.backdropPath {
+            imageUrlString = "https://image.tmdb.org/t/p/w500/" + backdropPath
+            let imageURL = URL(string: imageUrlString)
+            movieImage.sd_setImage(with: imageURL, completed: nil)
+        }
+    }
+    
+    func configureWithSerials(_ item: ResultsSerials) {
+        movieTitle.text = item.originalName
         var imageUrlString = ""
         if let backdropPath = item.backdropPath {
             imageUrlString = "https://image.tmdb.org/t/p/w500/" + backdropPath

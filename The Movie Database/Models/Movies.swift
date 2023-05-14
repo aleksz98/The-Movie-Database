@@ -9,7 +9,7 @@ import Foundation
 
 struct Movies : Decodable {
     let page : Int
-    let results : [Results]
+    let results : [ResultsMovies]
     let totalPages : Int
     let totalResults : Int
     
@@ -22,39 +22,65 @@ struct Movies : Decodable {
     }
 }
 
-struct Results : Decodable {
-    let adult : Bool
+struct ResultsMovies : Decodable {
     let backdropPath : String?
-    let id : Int
-    let title : String
-    let originalLanguage : String
     let originalTitle : String
     let overview : String
     let posterPath : String
-    let mediaType : String
-    let genreIds : [Int]
     let popularity : Double
     let releaseDate : String
-    let video : Bool
     let voteAverage : Double
     let voteCount : Int
     
     enum CodingKeys: String, CodingKey {
         
-        case adult = "adult"
         case backdropPath = "backdrop_path"
-        case id = "id"
-        case title = "title"
-        case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case overview = "overview"
         case posterPath = "poster_path"
-        case mediaType = "media_type"
-        case genreIds = "genre_ids"
         case popularity = "popularity"
         case releaseDate = "release_date"
-        case video = "video"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+}
+
+struct Serials : Decodable {
+    let page : Int?
+    let results : [ResultsSerials]?
+    let totalPages : Int?
+    let totalResults : Int?
+
+    enum CodingKeys: String, CodingKey {
+
+        case page = "page"
+        case results = "results"
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+struct ResultsSerials : Decodable {
+    let backdropPath : String?
+    let originalName : String
+    let overview : String
+    let posterPath : String
+    let popularity : Double
+    let firstAirDate : String
+    let voteAverage : Double
+    let voteCount : Int
+    let originCountry : [String]
+
+    enum CodingKeys: String, CodingKey {
+
+        case backdropPath = "backdrop_path"
+        case originalName = "original_name"
+        case overview = "overview"
+        case posterPath = "poster_path"
+        case popularity = "popularity"
+        case firstAirDate = "first_air_date"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+        case originCountry = "origin_country"
     }
 }

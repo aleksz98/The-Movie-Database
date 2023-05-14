@@ -33,7 +33,7 @@ final class NetworkManager {
     
     private init() {}
     
-    func reguestTrendingMovies(completion: @escaping(([Results]) -> ())){
+    func reguestTrendingMovies(completion: @escaping(([ResultsMovies]) -> ())){
         let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=99709c91f79d11764afb7ab67218f012"
         
         AF.request(url).responseJSON { responce in
@@ -45,14 +45,14 @@ final class NetworkManager {
         }
     }
     
-    func reguestTrendingSerials(completion: @escaping(([Results]) -> ())){
+    func reguestTrendingSerials(completion: @escaping(([ResultsSerials]) -> ())){
         let url = "https://api.themoviedb.org/3/trending/tv/week?api_key=99709c91f79d11764afb7ab67218f012"
         
         AF.request(url).responseJSON { responce in
             let decoder = JSONDecoder()
-            if let data = try? decoder.decode(Movies.self, from: responce.data!) {
+            if let data = try? decoder.decode(Serials.self, from: responce.data!) {
                 let serials = data.results
-                completion(serials)
+                completion(serials!)
             }
         }
     }

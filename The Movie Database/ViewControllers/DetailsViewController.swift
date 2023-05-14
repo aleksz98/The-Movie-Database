@@ -17,7 +17,9 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var movieRating: UILabel!
     @IBOutlet private weak var movieReleaseDate: UILabel!
     
-    var movie: Results?
+    // MARK: - Properties
+    var movie: ResultsMovies?
+    var serial: ResultsSerials?
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -25,17 +27,27 @@ final class DetailsViewController: UIViewController {
         loadInfo()
     }
     
+    // Mark: - Private methods
     private func loadInfo() {
         var imageUrlString = ""
-        if let backdropPath = self.movie?.backdropPath{
+        
+        if let backdropPath = movie?.backdropPath ?? serial?.backdropPath {
             imageUrlString = "https://image.tmdb.org/t/p/w500/" + backdropPath
-            let imageURL = URL(string: imageUrlString)
-            self.movieImage.sd_setImage(with: imageURL, completed: nil)
+            if let imageURL = URL(string: imageUrlString) {
+                movieImage.sd_setImage(with: imageURL, completed: nil)
+            }
         }
-        movieTitle.text = movie?.originalTitle ?? "No name"
-        movieDescription.text = "Описание: \(movie?.overview ?? "No overview")"
-        movieRating.text = "Рейтинг: \(movie?.voteAverage.description ?? "No rating")"
-        movieVoteCount.text = "Количество голосов: \(movie?.voteCount.description ?? "No vote count")"
-        movieReleaseDate.text = "Дата выхода: \(movie?.releaseDate ?? "No release date")"
+        
+        let title = movie?.originalTitle ?? serial?.originalName ?? "No name"
+        let overview = movie?.overview ?? serial?.overview ?? "No overview"
+        let voteAverage = movie?.voteAverage.description ?? serial?.voteAverage.description ?? "No rating"
+        let voteCount = movie?.voteCount.description ?? serial?.voteCount.description ?? "No vote count"
+        let releaseDate = movie?.releaseDate ?? serial?.firstAirDate ?? "No release date"
+        
+        movieTitle.text = title
+        movieDescription.text = "Описание: \(overview)"
+        movieRating.text = "Рейтинг: \(voteAverage)"
+        movieVoteCount.text = "Количество голосов: \(voteCount)"
+        movieReleaseDate.text = "Дата выхода: \(releaseDate)"
     }
 }

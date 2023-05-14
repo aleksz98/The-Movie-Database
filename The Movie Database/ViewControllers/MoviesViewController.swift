@@ -13,17 +13,13 @@ final class MoviesViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     // MARK: - Private properties
-    private var moviesList: [Results] = []
-    private var serialsList: [Results] = []
+    private var moviesList: [ResultsMovies] = []
+    private var serialsList: [ResultsSerials] = []
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moviesCollectionView.register(UINib(nibName: "MoviesViewCell", bundle: nil), forCellWithReuseIdentifier: "MoviesViewCell")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         fetchMovies()
         fetchSerials()
     }
@@ -32,9 +28,10 @@ final class MoviesViewController: UIViewController {
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            
+            fetchMovies()
             self.moviesCollectionView.reloadData()
         case 1:
+            fetchSerials()
             self.moviesCollectionView.reloadData()
         default:
             print("Error")
@@ -46,20 +43,34 @@ final class MoviesViewController: UIViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return moviesList.count
+        if segmentControl.selectedSegmentIndex == 0 {
+            return moviesList.count
+        } else {
+            return serialsList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let moviesCell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesViewCell", for: indexPath) as! MoviesViewCell
-        moviesCell.configureWith(moviesList[indexPath.row])
+        if segmentControl.selectedSegmentIndex == 0 {
+            moviesCell.configureWithMovies(moviesList[indexPath.row])
+        } else {
+            moviesCell.configureWithSerials(serialsList[indexPath.row])
+        }
+        //        moviesCell.configureWith(moviesList[indexPath.row])
         return moviesCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = moviesList[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController {
-            detailsViewController.movie = movie
+            if segmentControl.selectedSegmentIndex == 0 {
+                let movie = moviesList[indexPath.row]
+                detailsViewController.movie = movie
+            } else {
+                let serial = serialsList[indexPath.row]
+                detailsViewController.serial = serial
+            }
             navigationController?.pushViewController(detailsViewController, animated: true)
         }
     }
