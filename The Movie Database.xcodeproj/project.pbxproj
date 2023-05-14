@@ -10,6 +10,8 @@
 		2C1218222A0C358F001CF8F9 /* MoviesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1218202A0C358F001CF8F9 /* MoviesViewCell.swift */; };
 		2C1218232A0C358F001CF8F9 /* MoviesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1218212A0C358F001CF8F9 /* MoviesViewCell.xib */; };
 		2C1218262A0C3C8F001CF8F9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C1218252A0C3C8F001CF8F9 /* SDWebImage */; };
+		2C8700962A11509600560368 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C8700952A11509600560368 /* Alamofire */; };
+		2C8700982A115B4200560368 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8700972A115B4200560368 /* DetailsViewController.swift */; };
 		2CD3F5D62A07D7860006E2E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D52A07D7860006E2E9 /* AppDelegate.swift */; };
 		2CD3F5D82A07D7860006E2E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D72A07D7860006E2E9 /* SceneDelegate.swift */; };
 		2CD3F5DA2A07D7860006E2E9 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3F5D92A07D7860006E2E9 /* MoviesViewController.swift */; };
@@ -23,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2C1218202A0C358F001CF8F9 /* MoviesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewCell.swift; sourceTree = "<group>"; };
 		2C1218212A0C358F001CF8F9 /* MoviesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesViewCell.xib; sourceTree = "<group>"; };
+		2C8700972A115B4200560368 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Movie Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD3F5D52A07D7860006E2E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD3F5D72A07D7860006E2E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1218262A0C3C8F001CF8F9 /* SDWebImage in Frameworks */,
+				2C8700962A11509600560368 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD3F5D92A07D7860006E2E9 /* MoviesViewController.swift */,
+				2C8700972A115B4200560368 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			name = "The Movie Database";
 			packageProductDependencies = (
 				2C1218252A0C3C8F001CF8F9 /* SDWebImage */,
+				2C8700952A11509600560368 /* Alamofire */,
 			);
 			productName = "The Movie Database_Lesson 3.2";
 			productReference = 2CD3F5D22A07D7860006E2E9 /* The Movie Database.app */;
@@ -186,6 +192,7 @@
 			mainGroup = 2CD3F5C92A07D7860006E2E9;
 			packageReferences = (
 				2C1218242A0C3C8F001CF8F9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				2C8700942A11509600560368 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 2CD3F5D32A07D7860006E2E9 /* Products */;
 			projectDirPath = "";
@@ -219,6 +226,7 @@
 				2CD3F5DA2A07D7860006E2E9 /* MoviesViewController.swift in Sources */,
 				2CD3F5EF2A07D9D60006E2E9 /* NetworkManager.swift in Sources */,
 				2C1218222A0C358F001CF8F9 /* MoviesViewCell.swift in Sources */,
+				2C8700982A115B4200560368 /* DetailsViewController.swift in Sources */,
 				2CD3F5D62A07D7860006E2E9 /* AppDelegate.swift in Sources */,
 				2CD3F5D82A07D7860006E2E9 /* SceneDelegate.swift in Sources */,
 			);
@@ -448,6 +456,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		2C8700942A11509600560368 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -455,6 +471,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C1218242A0C3C8F001CF8F9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		2C8700952A11509600560368 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C8700942A11509600560368 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

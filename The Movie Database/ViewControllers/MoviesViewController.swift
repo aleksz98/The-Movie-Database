@@ -13,43 +13,66 @@ final class MoviesViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     // MARK: - Private properties
-    private var movies: Movies?
-    private let networkManager = NetworkManager.shared
+    private var moviesList: [Results] = []
+    private var serialsList: [Results] = []
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moviesCollectionView.register(UINib(nibName: "MoviesViewCell", bundle: nil), forCellWithReuseIdentifier: "MoviesViewCell")
         fetchMovies()
+        fetchSerials()
+    }
+    
+    // MARK: - Private IBAction
+    @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            self.moviesCollectionView.reloadData()
+        case 1:
+            self.moviesCollectionView.reloadData()
+        default:
+            print("Error")
+        }
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension MoviesViewController: UICollectionViewDataSource {
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies?.results.count ?? 3
+            return moviesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let moviesCell = moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesViewCell", for: indexPath) as! MoviesViewCell
-        if let movie = movies?.results[indexPath.row] {
-            moviesCell.configureWith(movie)
-        }
+        moviesCell.configureWith(moviesList[indexPath.row])
         return moviesCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = moviesList[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController {
+            detailsViewController.movie = movie
+            navigationController?.pushViewController(detailsViewController, animated: true)
+        }
     }
 }
 
 //MARK: - Networking
 extension MoviesViewController {
     private func fetchMovies() {
-        networkManager.fetchMovies(Movies.self, from: Link.moviesUrl.url) { [weak self] result in
-            switch result {
-            case .success(let movies):
-                self?.movies = movies
-                self?.moviesCollectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
+        NetworkManager.shared.reguestTrendingMovies { [weak self] moviesList in
+            self?.moviesList = moviesList
+            self?.moviesCollectionView.reloadData()
+        }
+    }
+    
+    private func fetchSerials() {
+        NetworkManager.shared.reguestTrendingSerials { [weak self] serialsList in
+            self?.serialsList = serialsList
+            self?.moviesCollectionView.reloadData()
         }
     }
 }

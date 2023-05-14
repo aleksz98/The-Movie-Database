@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum Link {
     case moviesUrl
@@ -32,24 +33,28 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchMovies<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
+    func reguestTrendingMovies(completion: @escaping(([Results]) -> ())){
+        let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=99709c91f79d11764afb7ab67218f012"
+        
+        AF.request(url).responseJSON { responce in
+            let decoder = JSONDecoder()
+            if let data = try? decoder.decode(Movies.self, from: responce.data!) {
+                let movies = data.results 
+                completion(movies)
             }
-            
-            do {
-                let decoder = JSONDecoder()
-                let dataModel = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(dataModel))
-                }
-            } catch {
-                completion(.failure(.decodingError))
+        }
+    }
+    
+    func reguestTrendingSerials(completion: @escaping(([Results]) -> ())){
+        let url = "https://api.themoviedb.org/3/trending/tv/week?api_key=99709c91f79d11764afb7ab67218f012"
+        
+        AF.request(url).responseJSON { responce in
+            let decoder = JSONDecoder()
+            if let data = try? decoder.decode(Movies.self, from: responce.data!) {
+                let serials = data.results
+                completion(serials)
             }
-        }.resume()
+        }
     }
 }
 
