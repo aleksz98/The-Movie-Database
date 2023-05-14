@@ -20,6 +20,10 @@ final class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moviesCollectionView.register(UINib(nibName: "MoviesViewCell", bundle: nil), forCellWithReuseIdentifier: "MoviesViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchMovies()
         fetchSerials()
     }
@@ -28,6 +32,7 @@ final class MoviesViewController: UIViewController {
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
+            
             self.moviesCollectionView.reloadData()
         case 1:
             self.moviesCollectionView.reloadData()
@@ -41,7 +46,7 @@ final class MoviesViewController: UIViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return moviesList.count
+        return moviesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
